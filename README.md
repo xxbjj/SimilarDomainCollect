@@ -1,12 +1,30 @@
-# 基于domainfuzz修改。
+# SimilarDomainCollect 
+基于Domain_fuzz修改实现的相似域名挖掘工具
 
+# 需求描述 
+基于已有的域名尝试发现其它关键字相似的域名
+
+举例：
+1、基于 http://www.baidu.com 挖掘类似  http://www.baidu.cn 的域名资产
+2、基于 http://www.baidu.com 挖掘类似  http://www.baidu1.com 的域名资产
+3、基于 http://www.baidu.com 挖掘类似  http://www.baidu.com.cn 的域名资产
+
+# 功能需求：
+0、实现Fuzz域名的任意位置
+1、基于http请求状态码判断域名是否存在
+2、基于域名解析状态判断域名是否存在
+3、输出结果返回详细状态码实现分辨可用域名与可解析域名
+
+# 代码实现 
+基于autoing/domain_fuzz修改实现SimilarDomain
+https://github.com/autoing/domain_fuzz
 
 
 # 底层原理:
 1、使用字符串替换$$处的字符,并进行访问测试。
 2、根据不同的报错信息及响应状态判断域名是否存在。【即getip解析和http访问】
 
-# 支持运行模式：
+# 运行模式：
 可选dict模式(默认)或fuzz模式
 字典模式：使用字典内的字符串 替换$$位置。默认使用dict-top-domain顶级域名字典
 fuzz模式：生成随机的字符串 替换$$位置。
