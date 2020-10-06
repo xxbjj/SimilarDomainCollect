@@ -1,5 +1,4 @@
-# SimilarDomainCollect 
-基于Domain_fuzz修改实现的相似域名挖掘工具-NovaSec
+# SimilarDomainCollect-NovaSec
 
 # 目标功能
 基于已有的域名尝试发现其它关键字相似的域名
