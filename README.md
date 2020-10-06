@@ -39,6 +39,19 @@ https://github.com/autoing/domain_fuzz
 
 fuzz模式：生成随机的字符串 替换$$位置。
 
+
+# 更新记录
+update 1.2.1 支持指定文件输出名称
+
+python3 similardomain.py -uf  target.txt -of output.txt
+
+update 1.2 支持批量FUZZ域名
+
+python3 similardomain.py -uf  target.txt
+
+update 1.1 基本架构实现
+
+python3 similardomain.py -uf  target.txt
 # 使用帮助
 ```code
 λ python3 similardomain.py -u http://baidu.$$.com -h
@@ -68,7 +81,7 @@ optional arguments:
   -fr FUZZRANGES, --fuzzranges FUZZRANGES
                         fuzz范围：默认字典长度为1-4位数所有可能组合，加上该参数表示使用自定义长度。
 ```
-# 快速使用
+# 简单使用
 ```code
 python3 similardomain.py -u http://baidu.$$.com			#使用http协议与默认域名字典爆破类似 【baidu.**.com】 域名,输出能够被dns和request解析的请求
 python3 similardomain.py -u http://baidu.$$.com -fl 3		#使用http协议与默认域名字典爆破类似 【baidu.**.com】 域名,仅输出能够被request解析的请求
@@ -81,13 +94,3 @@ python3 similardomain.py -u http://baidu.$$.com -m fuzz -fs abdef -fh 2	#使用h
 输出为当前目录下的similardomain.py.result.csv文件
 
 PS:csv格式使用excel或emeditor等编辑器打开更便于对比排序。
-
-# 更新记录
-update 1.2.1 支持指定文件输出名称
-
-python3 similardomain.py -uf  target.txt -of output.txt
-
-update 1.2 支持文件批量FUZZ域名
-
-python3 similardomain.py -uf  target.txt
-
