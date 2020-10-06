@@ -15,11 +15,11 @@
 # 功能需求：
 0、实现Fuzz域名的任意位置
 
-1、基于http请求状态码判断域名是否存在
+1、基于http状态码判断域名是否存在
 
 2、基于域名解析状态判断域名是否存在
 
-3、输出结果返回详细状态码实现分辨可用域名与可解析域名
+3、返回详细状态分辨可用域名
 
 # 代码实现 
 基于autoing/domain_fuzz修改实现（有任何问题请留言）
@@ -30,7 +30,7 @@ https://github.com/autoing/domain_fuzz
 # 底层原理:
 1、使用字符串替换$$处的字符,并进行访问测试。
 
-2、根据不同的报错信息及响应状态判断域名是否存在。【即getip解析和http访问】
+2、根据request请求的不同响应状态及报错信息判断域名是否存在。
 
 # 运行模式：
 可选dict模式(默认)或fuzz模式
@@ -84,7 +84,10 @@ PS:csv格式使用excel或emeditor等编辑器打开更便于对比排序。
 
 # 更新记录
 update 1.2.1 支持指定文件输出名称
+
 python3 similardomain.py -uf  target.txt -of output.txt
+
 update 1.2 支持文件批量FUZZ域名
+
 python3 similardomain.py -uf  target.txt
 
