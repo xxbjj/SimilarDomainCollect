@@ -54,32 +54,36 @@ update 1.1 基本架构实现
 python3 similardomain.py -uf  target.txt
 # 使用帮助
 ```code
-λ python3 similardomain.py -u http://baidu.$$.com -h
-(['similardomain.py', '-u', 'http://baidu.$$.com', '-h'],)
-FUZZ任意位置的域名
+λ python3 similardomain.py -h
+(['similardomain.py', '-h'],)
+FUZZ任意位置的域名 Author by wineZERO
 
 optional arguments:
   -h, --help            show this help message and exit
-  -u URL, --url URL     目标链接/域名：http://$$.mi.com
-                        表示通过http协议爆破mi.com的子域名，$$为标记点，支持纯域名格式
+  -u [URL], --url [URL]
+                        目标链接/域名：http://$$.XXX.com 或 $$.XXX.com  或 WWW.XXX.$$ 
+                        http://$$.mi.com 表示通过http协议爆破mi.com的子域名，$$为标记点，支持纯域名格式
+                        $$.mi.com 表示通过http/https协议分别爆破mi.com的子域名，$$为标记点，支持纯域名格式
+  -uf [URLFILE], --urlfile [URLFILE]
+                        目标链接/域名文件,每行一个域名或URL,适用于批量Fuzz域名的类似域名使用
+  -of [OUTFILE], --outfile [OUTFILE]
+                        输出结果文件：默认为脚本名称+时间戳,如 similardomain.py.1601994476.csv
   -t [THREAD], --thread [THREAD]
-                        线程：默认20个线程，该参数表示自定义线程数
+                        FUZZ线程：默认20个线程，该参数表示自定义线程数
   -o [OPTIONS], --options [OPTIONS]
                         请求模式：默认GET模式，加上该参数表示使用head请求方式
   -m [MODE], --mode [MODE]
-                        运行模式：可选dict模式(默认)或fuzz模式
+                        运行模式：可选dict模式(默认)或fuzz模式，dict模式默认使用顶级域字典
   -fl FILTERLEVEL, --filterlevel FILTERLEVEL
                         1:输出所有检测记录,2:(默认)输出所有可解析域名记录,3:仅输出可访问域名记录
   -fh FLAGHTTP, --flaghttp FLAGHTTP
-                        1:(默认)继承输入url的协议类型,2:同时使用http/https协议,对于纯域名按照http/http
-                        s协议处理
+                        1:(默认)继承输入url的协议类型,2:同时使用http/https协议,对于纯域名输入分别按照http/https协议处理
   -df [DICTFILE], --dictfile [DICTFILE]
-                        字典文件：从指定域名字典文件读取字典,会自动处理.字符
+                        域名字典文件：从指定域名字典文件读取字典,会自动处理.字符
   -fs [FUZZSTR], --fuzzstr [FUZZSTR]
-                        fuzz字符串：short(默认)标识26个字母可能排序，long表示字母加上0-9,其他输入将直接传递到f
-                        uzzstr
+                        fuzz字符串：short(默认)标识26个字母可能排序，long表示字母加上0-9,其他输入将直接传递到fuzzstr
   -fr FUZZRANGES, --fuzzranges FUZZRANGES
-                        fuzz范围：默认字典长度为1-4位数所有可能组合，加上该参数表示使用自定义长度。
+                        fuzz字符串范围：默认字典长度为1-4位数所有可能组合，加上该参数表示使用自定义长度。
 ```
 # 简单使用
 ```code
@@ -94,3 +98,7 @@ python3 similardomain.py -u http://baidu.$$.com -m fuzz -fs abdef -fh 2	#使用h
 输出为当前目录下的similardomain.py.result.csv文件
 
 PS:csv格式使用excel或emeditor等编辑器打开更便于对比排序。
+
+# 其他
+全球顶级域名数据库 IANA — Root Zone Database https://www.iana.org/domains/root/db
+
