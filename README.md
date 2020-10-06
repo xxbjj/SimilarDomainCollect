@@ -1,7 +1,7 @@
 # SimilarDomainCollect 
 基于Domain_fuzz修改实现的相似域名挖掘工具
 
-# 代码功能
+# 目标功能
 基于已有的域名尝试发现其它关键字相似的域名
 
 举例：
@@ -12,7 +12,7 @@
 
 3、基于 http://www.baidu.com 挖掘类似  http://***.baidu.com 的域名资产
 
-# 功能需求：
+# 分步实现：
 0、实现Fuzz域名的任意位置
 
 1、基于http状态码判断域名是否存在
@@ -21,7 +21,7 @@
 
 3、返回详细状态分辨可用域名
 
-# 代码实现 
+# 最终代码 
 基于autoing/domain_fuzz修改实现（有任何问题请留言）
 
 https://github.com/autoing/domain_fuzz
