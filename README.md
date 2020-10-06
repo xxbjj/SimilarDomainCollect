@@ -1,15 +1,16 @@
 # SimilarDomainCollect 
 基于Domain_fuzz修改实现的相似域名挖掘工具
 
-# 需求描述 
+# 代码功能
 基于已有的域名尝试发现其它关键字相似的域名
 
 举例：
-1、基于 http://www.baidu.com 挖掘类似  http://www.baidu.cn 的域名资产
 
-2、基于 http://www.baidu.com 挖掘类似  http://www.baidu1.com 的域名资产
+1、基于 http://www.baidu.com 挖掘类似  http://www.baidu.*** 的域名资产
 
-3、基于 http://www.baidu.com 挖掘类似  http://www.baidu.com.cn 的域名资产
+2、基于 http://www.baidu.com 挖掘类似  http://www.baidu***.com 的域名资产
+
+3、基于 http://www.baidu.com 挖掘类似  http://***.baidu.com 的域名资产
 
 # 功能需求：
 0、实现Fuzz域名的任意位置
