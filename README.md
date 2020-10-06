@@ -1,27 +1,40 @@
 SimilarDomainCollect 基于已知域名发现其他简单相似域名
 
+
 0.1需求描述：
+
 基于www.baidu.com挖掘 www.baidu.*** 相似网站
+
 基于www.baidu.com挖掘 www.baidu***.com  相似网站
 
 --------------------
 0.2功能需求：
+
 1、基于替换实现任意位置的fuzz支持
+
 2、基于httpshttp访问状态判断
+
 3、dns解析状态判断
+
 4、输出结果可用分析
 
 --------------------
 0.3代码实现：
+
 基于autoing/domain_fuzz修改实现,如有侵权提示请留言
+
 https://github.com/autoing/domain_fuzz
 
 FuzzDomain原理:
+
 1、使用字符串替换$$处的字符,并进行访问测试。
+
 2、根据不同的报错信息及响应状态判断域名是否存在。【即getip解析和http访问】
 
 支持运行模式：可选dict(域名字典文件)模式(默认)或fuzz(字母排列组合)模式
+
 字典模式：使用字典内的字符串 替换$$位置。默认使用dict-top-domain顶级域名字典
+
 fuzz模式：生成随机的字符串 替换$$位置。
 
 --------------------
@@ -70,18 +83,26 @@ python3 similardomain.py -u http://baidu.$$.com -m fuzz -fs abdef	#使用http协
 python3 similardomain.py -u http://baidu.$$.com -m fuzz -fs abdef -fh 2	#使用http/https协议与abdef等字母组成字典爆破类似 【baidu.**.com】 域名
 
 输出默认为当前目录下的similardomain.py.result.csv文件
+
 PS:csv格式使用excel或emeditor等编辑器 更便于对比排序。
 
 --------------------
 0.5更新记录:
+
 update 1.2.1
+
 简单支持指定文件输出名称
+
 python3 similardomain.py -uf  target.txt -of output.txt
 
 update 1.2
+
 简单支持从文件输入批量域名进行FUZZ
+
 python3 similardomain.py -uf  target.txt
+
 update1.1
+
 基本架构优化实现
 
 --------------------
