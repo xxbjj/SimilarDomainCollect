@@ -12,7 +12,7 @@
 
 3、基于 http://www.baidu.com 挖掘类似  http://***.baidu.com 的域名资产
 
-# 分步实现：
+# 分步实现
 0、实现Fuzz域名的任意位置
 
 1、基于http状态码判断域名是否存在
@@ -27,7 +27,7 @@
 https://github.com/autoing/domain_fuzz
 
 
-# 底层原理:
+# 底层原理
 1、使用字符串替换$$处的字符,并进行访问测试。
 
 2、根据request请求的不同响应状态及报错信息判断域名是否存在。
