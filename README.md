@@ -6,27 +6,36 @@
 
 举例：
 1、基于 http://www.baidu.com 挖掘类似  http://www.baidu.cn 的域名资产
+
 2、基于 http://www.baidu.com 挖掘类似  http://www.baidu1.com 的域名资产
+
 3、基于 http://www.baidu.com 挖掘类似  http://www.baidu.com.cn 的域名资产
 
 # 功能需求：
 0、实现Fuzz域名的任意位置
+
 1、基于http请求状态码判断域名是否存在
+
 2、基于域名解析状态判断域名是否存在
+
 3、输出结果返回详细状态码实现分辨可用域名与可解析域名
 
 # 代码实现 
-基于autoing/domain_fuzz修改实现SimilarDomain
+基于autoing/domain_fuzz修改实现（有任何问题请留言）
+
 https://github.com/autoing/domain_fuzz
 
 
 # 底层原理:
 1、使用字符串替换$$处的字符,并进行访问测试。
+
 2、根据不同的报错信息及响应状态判断域名是否存在。【即getip解析和http访问】
 
 # 运行模式：
 可选dict模式(默认)或fuzz模式
+
 字典模式：使用字典内的字符串 替换$$位置。默认使用dict-top-domain顶级域名字典
+
 fuzz模式：生成随机的字符串 替换$$位置。
 
 # 使用帮助
@@ -69,7 +78,8 @@ python3 similardomain.py -u http://baidu.$$.com -m fuzz -fs abdef	#使用http协
 python3 similardomain.py -u http://baidu.$$.com -m fuzz -fs abdef -fh 2	#使用http/https协议与abdef等字母组成字典爆破类似 【baidu.**.com】 域名
 ```
 输出为当前目录下的similardomain.py.result.csv文件
-PS:csv格式使用excel或emeditor等编辑器 更便于对比排序。
+
+PS:csv格式使用excel或emeditor等编辑器打开更便于对比排序。
 
 # 更新记录
 update 1.2.1 支持指定文件输出名称
